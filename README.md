@@ -10,6 +10,6 @@ This is a flutter application to setup the project just follow the guide on the 
 
 ## Documentation
 
-The documentation of the app can be found on de [Documentation](/documentation) folder. 
+The documentation of the app can be found on de [Documentation](/documentation/) folder.
 
 There you can find the specs and the roadmap of the future.

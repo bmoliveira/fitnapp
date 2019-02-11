@@ -2,7 +2,7 @@
 
 Here on the specs you can find the specs for the core features of the app in order to help future debugging and development of the app.
 
-For other types of documentation please check the [documentation](../README.md) folder.
+For other types of documentation please check the [documentation](documentation/) folder.
 
 ## Format
 
@@ -31,18 +31,18 @@ filename: <Feature>.md
 
 ## FitNapp
 
-### [Register](/register)
+### [Register](../register)
 
 All the screens and logic related to the sign up of a user.
 
-### [Login](/login)
+### [Login](../login)
 
 All the screens and behavior for a login
 
-### [Content](/content)
+### [Content](../content)
 
 The app after a user is logged in.
 
-### [Model](/model)
+### [Model](../model)
 
 The model sync and user storage will be for now all made with Firebase tools.
