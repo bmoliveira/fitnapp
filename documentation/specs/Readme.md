@@ -31,7 +31,7 @@ filename: <Feature>.md
 
 ## FitNapp
 
-### [Register](/register)
+### [Register](./register)
 
 All the screens and logic related to the sign up of a user.
 
