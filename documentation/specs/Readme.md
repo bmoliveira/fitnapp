@@ -31,18 +31,18 @@ filename: <Feature>.md
 
 ## FitNapp
 
-### [Register](../register)
+### [Register](/register)
 
 All the screens and logic related to the sign up of a user.
 
-### [Login](../login)
+### [Login](/login)
 
 All the screens and behavior for a login
 
-### [Content](../content)
+### [Content](/content)
 
 The app after a user is logged in.
 
-### [Model](../model)
+### [Model](/model)
 
 The model sync and user storage will be for now all made with Firebase tools.
