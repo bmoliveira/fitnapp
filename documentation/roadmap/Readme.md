@@ -1,6 +1,6 @@
 # Roadmap
 
-Here on the roadmap you can find the [done](/done), [planned](/planned) or [stale](/hold) features.
+Here on the roadmap you can find the [done](./done), [planned](./planned) or [stale](./hold) features.
 
 For other types of documentation please check the [documentation](../) folder.
 
