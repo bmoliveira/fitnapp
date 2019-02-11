@@ -10,7 +10,7 @@ The specs can be just a file if it does not contain descendats or a folder if it
 
 ### Folder format
 
-If there is need to a folder, add Feature.md to the root of the folder, and afterwards link all the other mds to it.
+If there is need to a folder, add Readme.md to the root of the folder, and afterwards link all the other mds to it.
 
 ### Linking
 
