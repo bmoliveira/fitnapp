@@ -2,7 +2,7 @@
 
 Here you can find all the documentation needed for understanging current and future scope of the project.
 
-More generic information can be found on the [README](../).
+More generic information can be found on the [README](../README.md).
 
 ## [Specs](./specs)
 
