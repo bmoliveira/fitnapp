@@ -14,39 +14,16 @@ The Model spec group is a root group of [specs](../) for all the base models of 
 
 #### Properties
 
-- exercises: List\<Exercise>
+- workouts: List\<Workout>
 - start_date: Date
 - end_date: Date
 
-### [Exercise](./exercise.md)
+### [Workout](./workout.md)
 
-#### Properties
-
-- name
-- properties: List\<Property>
-- exercise_type: ExerciseType
-- image: String (ResourceName)
-
-### [ExerciseType](./exercise_type.md)
-
-#### Properties
-
-- name: String
-- icon: String (ResourceName)
-- default_exercises: List\<Property>
+### [WorkoutInfo](./workout_info.md)
 
 ### [Property\<T>](./property.md)
 
-#### Properties
-
-- type: String
-  - Type of the property T
-- key: String
-  - Key to parse on the object
-- nested_type: String
-  - Optional
-  - If the type is a list the T type to parse
-
-### SerieRepetition
+### [SerieRepetition](./serie_repetition.md)
 
 #### Properties
