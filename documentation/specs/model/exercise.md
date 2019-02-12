@@ -1,6 +1,6 @@
 # Exercise
 
-The exercise have a dynamic list of properties please check the [property](../property.md)
+The exercise have a dynamic list of properties please check the [property](./property.md)
 
 - [01] Automatic field introduction
   - In terms of UI you pick a name and the type and the others are seamless.
