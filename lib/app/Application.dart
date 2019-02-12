@@ -17,7 +17,7 @@ class Application extends StatelessWidget {
             rebuildOnChange: false,
             builder: (context, child, userViewModel) {
               return MaterialApp(
-                title: 'Gym Track',
+                title: 'FitNapp',
                 theme: ThemeData(
                   primarySwatch: Colors.blue,
                 ),
