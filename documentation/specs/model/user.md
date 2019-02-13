@@ -6,6 +6,10 @@
 
 ##### name: String
 
+##### avatar: String
+
+- URL to the avatar
+
 ---
 ---
 
