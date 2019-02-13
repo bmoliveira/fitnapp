@@ -6,7 +6,7 @@ A session/series of workouts.
 
 ---
 
-##### workouts: List\<Workout>
+##### workouts: List\<[Workout](./workout)>
 
 ##### start_date: Date
 
