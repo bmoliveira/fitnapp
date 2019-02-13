@@ -34,22 +34,24 @@ The reasoning beind this is to be able to in the future build graphics based on 
 ## [01] Supported property types
 
 - Double
-  - Key: double
+  - key: double
 
 - Int
-  - Key: int
+  - key: int
 
 - String
-  - Key: string
+  - key: string
 
 - Date
-  - Key: date
-
-- List\<T>
-  - Key: list
-
-- Property\<T>
-  - Key: property
+  - key: date
 
 - SerieRepetition
   - Key: serie_repetition
+
+- List\<T>
+  - key: list
+  - nested_type: \<supported_nested_type>
+
+- Property\<T>
+  - key: property
+  - nested_type: \<supported_nested_type>

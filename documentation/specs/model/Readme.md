@@ -20,10 +20,6 @@ The Model spec group is a root group of [specs](../) for all the base models of 
 
 ### [Workout](./workout.md)
 
-### [WorkoutInfo](./workout_info.md)
-
 ### [Property\<T>](./property.md)
 
 ### [SerieRepetition](./serie_repetition.md)
-
-#### Properties
