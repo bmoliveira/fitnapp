@@ -4,19 +4,9 @@ The Model spec group is a root group of [specs](../) for all the base models of 
 
 ## Classes
 
-### User
+### [User](./user.md)
 
-#### Properties
-
-- name: String
-
-### ActivitySession
-
-#### Properties
-
-- workouts: List\<Workout>
-- start_date: Date
-- end_date: Date
+### [ActivitySession](./activity_session.md)
 
 ### [Workout](./workout.md)
 
