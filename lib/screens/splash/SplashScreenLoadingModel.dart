@@ -20,7 +20,6 @@ class SplashScreenLoadingModel extends Model {
   Future loadUser() async {
     var user = await _initDummyUser();
     userState = UserStateLoaded(user);
-    _userViewModel.updateUser(user);
     notifyListeners();
   }
 

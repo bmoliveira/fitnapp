@@ -26,6 +26,10 @@ dependencies:
   # Pretty loading animations
   flutter_spinkit: ^3.0.0
 
+  # Data class like comparison on classes
+  # https://pub.dartlang.org/packages/equatable
+  equatable: ^0.1.10
+
   firebase_core: ^0.3.0+1
   cloud_firestore: ^0.9.0+1
   firebase_auth: ^0.8.1

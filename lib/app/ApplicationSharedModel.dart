@@ -1,12 +1,13 @@
 import 'package:gym_track/screens/splash/SplashScreenViewModel.dart';
 import 'package:gym_track/viewmodel/UserViewModel.dart';
+import 'package:scoped_model/scoped_model.dart';
 
-class ApplicationSharedModel {
+class ApplicationModel {
   UserViewModel userViewModel = UserViewModel();
 
   SplashScreenViewModel splashViewModel;
 
-  ApplicationSharedModel() : super() {
+  ApplicationModel() : super() {
     splashViewModel = SplashScreenViewModel(userViewModel);
   }
 }
