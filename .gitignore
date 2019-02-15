@@ -1,3 +1,7 @@
+# Project related ignore
+**/GoogleService-Info.plist
+**/google-services.json
+
 # Miscellaneous
 *.class
 *.lock

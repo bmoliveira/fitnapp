@@ -1,4 +1,4 @@
-package com.broliveira.gymtrack
+package com.broliveira.fitnapp
 
 import android.os.Bundle
 

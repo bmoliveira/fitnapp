@@ -24,7 +24,11 @@ dependencies:
   scoped_model: ^1.0.1
 
   # Pretty loading animations
-  flutter_spinkit: "^3.0.0"
+  flutter_spinkit: ^3.0.0
+
+  firebase_core: ^0.3.0+1
+  cloud_firestore: ^0.9.0+1
+  firebase_auth: ^0.8.1
 
 dev_dependencies:
   flutter_test:
