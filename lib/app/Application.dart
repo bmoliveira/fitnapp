@@ -23,8 +23,6 @@ class Application extends StatelessWidget {
                 theme: ApplicationTheme.themeData,
                 home: SplashScreen(applicationModel.splashViewModel),
               );
-            }
-        )
-    );
+            }));
   }
 }

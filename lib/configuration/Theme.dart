@@ -7,11 +7,10 @@ class ApplicationTheme {
   static ApplicationTheme current = ApplicationTheme();
 
   static ThemeData themeData = ThemeData(
-    primarySwatch: ApplicationTheme.current.mainColor,
-    accentColor: ApplicationTheme.current.accentColor
-  );
+      primarySwatch: ApplicationTheme.current.mainColor,
+      accentColor: ApplicationTheme.current.accentColor);
 
-  Color mainColor = Colors.blue[500];
+  Color mainColor = Colors.blue;
   Color mainDarkColor = Colors.blue[900];
   Color accentColor = Colors.white;
 
