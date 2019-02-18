@@ -5,13 +5,13 @@ import 'package:gym_track/viewmodel/user/UserInfoState.dart';
 
 /// The UserViewModel will be the instance responsible for providing the user
 /// instance through all the application.
-///
-/// [UserViewModel] will have the [userAuthState] will change on
-/// logout, login or register of the user.
-/// The information on the user will be stored on [userInfoState].
 class UserViewModel {
+
+  /// Will change the state on logout, login or register of the user.
   ModelState<UserAuthState> userAuthState = ModelState(Initializing());
 
+  /// User basic information, this will change when we have like user profile
+  /// changes and settings.
   ModelState<UserInfoState> userInfoState = ModelState(NoInformation());
 
   /// For now this will be our auth provider.
