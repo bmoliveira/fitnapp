@@ -5,6 +5,9 @@ import 'package:gym_track/viewmodel/user/UserInfoState.dart';
 
 /// The UserViewModel will be the instance responsible for providing the user
 /// instance through all the application.
+///
+/// [TODO] Study the possible usecase of this being a part of a static instance
+/// through all the app.
 class UserViewModel {
   /// Will change the state on logout, login or register of the user.
   ModelState<UserAuthState> userAuthState = ModelState(Initializing());
@@ -18,12 +21,15 @@ class UserViewModel {
 
   /// Initialize the user state properly, at the end we will know if the we have
   /// a logged user or not.
-  void initialize() async {
+  Future<LoggedUser> initialize() async {
     await _auth.currentUser().then((user) {
-      userAuthState.value = LoggedUser(user);
+      final loggedUser = LoggedUser(user);
+      userAuthState.value = loggedUser;
+      return loggedUser;
     }).catchError((error) {
       print(error);
       userAuthState.value = NoUser();
     });
+    return null;
   }
 }

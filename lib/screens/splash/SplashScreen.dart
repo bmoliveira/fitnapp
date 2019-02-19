@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:gym_track/generic/FitnessNavigatior.dart';
+import 'package:gym_track/generic/ModelState.dart';
 import 'package:gym_track/model/UserLoadingState.dart';
 import 'package:gym_track/screens/home/HomePage.dart';
 import 'package:gym_track/screens/sign_up/SignUp.dart';
@@ -15,29 +17,46 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _viewModel.load();
     return ScopedModel(
-        model: _viewModel.loadingViewModel,
+        model: _viewModel.loadingState,
         child: Container(
           color: Colors.white,
           child: Center(
-            child: new ScopedModelDescendant<SplashScreenLoadingModel>(
-                builder: (context, child, splashLoadingViewModel) {
-              final currentState = splashLoadingViewModel.userState;
-              if (currentState is UserStateNone) {
-                return new Center(
-                  child: SignUpScreen(splashLoadingViewModel.signUpViewModel),
-                );
-              } else if (currentState is UserStateLoading) {
-                splashLoadingViewModel.loadUser();
-                return SpinKitPumpingHeart(
-                  color: Colors.deepOrange,
-                  size: 100,
-                );
-              } else if (currentState is UserStateLoaded) {
-                return HomeScreen(splashLoadingViewModel.homeScreenViewModel);
-              }
-            }),
+            child: new ScopedModelDescendant<ModelState<LoadingState>>(
+                rebuildOnChange: false,
+                builder: (context, child, state) {
+                  final currentState = state.value;
+                  if (currentState is Loaded) {
+                    _handleLoadedState(context, currentState);
+                  }
+                  return _loadingView();
+                }),
           ),
         ));
+  }
+
+  void _handleLoadedState(BuildContext context, Loaded state) {
+    final stateValue = state.value;
+    if (stateValue is SignUpViewModel) {
+      FitnessNavigator.pushSignUp(context,
+          MaterialPageRoute(builder: (context) {
+        return WelcomeScreen(stateValue);
+      }));
+    } else if (stateValue is HomeScreenViewModel) {
+      FitnessNavigator.pushContent(context,
+          MaterialPageRoute(builder: (context) {
+        return HomeScreen(stateValue);
+      }));
+    } else {
+      throw Exception("Invalid current loadedValueState provided: $stateValue");
+    }
+  }
+
+  Widget _loadingView() {
+    return SpinKitPumpingHeart(
+      color: Colors.deepOrange,
+      size: 100,
+    );
   }
 }
