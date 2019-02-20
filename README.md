@@ -20,12 +20,14 @@ In order to fully setup the Firebase follow this [official guide](https://codela
 - android
   - Add the `google-services.json` to `/android/app/`
 
-## Documentation
+## [Documentation](/documentation/)
 
-The documentation of the app can be found on de [Documentation](/documentation/) folder.
+The documentation folder holds the manual generated documentation for the project.
 
-There you can find the specs and the roadmap of the future.
+The Specs and the definition of the models.
+
+Any other documentation will be automatically generated with the dart_docs tool.
 
 ## Design resources
 
-The design resources [Icons](/design/icons) and [Sketch files](/design/sketch) are under the [design](/design/) page.
+The design resources [SVG Icons](/design/svg) and [Sketch files](/design/sketch) are under the [design](/design/) folder.
