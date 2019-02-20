@@ -2,6 +2,12 @@
 
 This application will be the companion and the logger for fitness session and exercises.
 
+![icon](https://raw.githubusercontent.com/bmoliveira/fitnapp/master/design/prints/app_icon.png)
+
+### Welcome
+
+![welcome](https://raw.githubusercontent.com/bmoliveira/fitnapp/master/design/prints/welcome_screen.png)
+
 ## Getting Started
 
 ### Setup project
