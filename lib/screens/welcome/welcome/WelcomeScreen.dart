@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gym_track/configuration/AppIcons.dart';
 import 'package:gym_track/configuration/Theme.dart';
-import 'package:gym_track/viewmodel/UserViewModel.dart';
-import 'package:scoped_model/scoped_model.dart';
+import 'package:gym_track/screens/welcome/welcome/WelcomeScreenViewModel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  WelcomeScreen(this._signUpViewModel) : super();
+  WelcomeScreen(this._welcomeScreenViewModel) : super();
 
-  final SignUpViewModel _signUpViewModel;
+  final WelcomeScreenViewModel _welcomeScreenViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class WelcomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Center(
-              child: SvgPicture.asset("design/svg/app_icon.svg",
+              child: SvgPicture.asset(AppIcons.AppIconPath,
                   width: 100, height: 100)),
           _emptySpace(16),
           Text(
@@ -102,39 +102,4 @@ class WelcomeScreen extends StatelessWidget {
       height: size,
     );
   }
-}
-
-class SignUpViewModel {
-  UserViewModel _userViewModel;
-
-  SignUpFieldsViewModel fieldsViewModel;
-
-  SignUpViewModel(this._userViewModel) : super() {
-    fieldsViewModel = SignUpFieldsViewModel(_userViewModel);
-  }
-}
-
-class SignUpFieldsViewModel extends Model {
-  UserViewModel _userViewModel;
-
-  SignUpFieldsViewModel(this._userViewModel) : super();
-
-  String name;
-  String nameError;
-
-  void nameChanged(String name) {
-    this.name = name;
-  }
-
-  bool isValid() {
-    return false;
-  }
-
-  void validate() {}
-}
-
-class UserActionsModel extends Model {
-  UserViewModel _userViewModel;
-
-  UserActionsModel(this._userViewModel) : super();
 }

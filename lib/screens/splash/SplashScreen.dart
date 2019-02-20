@@ -3,11 +3,10 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gym_track/generic/FitnessNavigatior.dart';
 import 'package:gym_track/generic/ModelState.dart';
-import 'package:gym_track/model/UserLoadingState.dart';
 import 'package:gym_track/screens/home/HomePage.dart';
-import 'package:gym_track/screens/sign_up/SignUp.dart';
-import 'package:gym_track/screens/splash/SplashScreenLoadingModel.dart';
+import 'package:gym_track/screens/welcome/welcome/WelcomeScreenViewModel.dart';
 import 'package:gym_track/screens/splash/SplashScreenViewModel.dart';
+import 'package:gym_track/screens/welcome/welcome/WelcomeScreen.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -38,7 +37,7 @@ class SplashScreen extends StatelessWidget {
 
   void _handleLoadedState(BuildContext context, Loaded state) {
     final stateValue = state.value;
-    if (stateValue is SignUpViewModel) {
+    if (stateValue is WelcomeScreenViewModel) {
       FitnessNavigator.pushSignUp(context,
           MaterialPageRoute(builder: (context) {
         return WelcomeScreen(stateValue);

@@ -1,7 +1,7 @@
 import 'package:gym_track/model/User.dart';
 import 'package:gym_track/model/UserLoadingState.dart';
 import 'package:gym_track/screens/home/HomePage.dart';
-import 'package:gym_track/screens/sign_up/SignUp.dart';
+import 'package:gym_track/screens/welcome/welcome/WelcomeScreenViewModel.dart';
 import 'package:gym_track/viewmodel/UserViewModel.dart';
 import 'package:scoped_model/scoped_model.dart';
 
@@ -15,7 +15,8 @@ class SplashScreenLoadingModel extends Model {
   HomeScreenViewModel get homeScreenViewModel =>
       HomeScreenViewModel(_userViewModel);
 
-  SignUpViewModel get signUpViewModel => SignUpViewModel(_userViewModel);
+  WelcomeScreenViewModel get signUpViewModel =>
+      WelcomeScreenViewModel(_userViewModel);
 
   Future loadUser() async {
     var user = await _initDummyUser();
