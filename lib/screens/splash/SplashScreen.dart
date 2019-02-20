@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:gym_track/generic/FitnessNavigatior.dart';
+import 'package:gym_track/generic/LoadingState.dart';
 import 'package:gym_track/generic/ModelState.dart';
 import 'package:gym_track/screens/home/HomePage.dart';
 import 'package:gym_track/screens/welcome/welcome/WelcomeScreenViewModel.dart';

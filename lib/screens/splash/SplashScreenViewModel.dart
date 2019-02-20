@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:gym_track/generic/LoadingState.dart';
 import 'package:gym_track/generic/ModelState.dart';
 import 'package:gym_track/screens/home/HomePage.dart';
 import 'package:gym_track/screens/welcome/welcome/WelcomeScreenViewModel.dart';
@@ -25,18 +26,4 @@ class SplashScreenViewModel {
     }
     loadingState.value = Loaded(HomeScreenViewModel(_userViewModel));
   }
-}
-
-class ContentViewModel {}
-
-abstract class LoadingState<T> extends Equatable {
-  LoadingState([props = const []]) : super(props);
-}
-
-class Loading<T> extends LoadingState<T> {}
-
-class Loaded<T> extends LoadingState<T> {
-  T value;
-
-  Loaded(this.value) : super([value]);
 }
