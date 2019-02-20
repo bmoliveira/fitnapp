@@ -25,3 +25,7 @@ In order to fully setup the Firebase follow this [official guide](https://codela
 The documentation of the app can be found on de [Documentation](/documentation/) folder.
 
 There you can find the specs and the roadmap of the future.
+
+## Design resources
+
+The design resources [Icons](/design/icons) and [Sketch files](/design/sketch) are under the [design](/design/) page.

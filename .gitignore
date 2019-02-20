@@ -2,6 +2,9 @@
 **/GoogleService-Info.plist
 **/google-services.json
 
+# Design generated content
+design/generated/*
+
 # Miscellaneous
 *.class
 *.lock
