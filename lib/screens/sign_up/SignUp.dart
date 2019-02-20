@@ -3,11 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:gym_track/configuration/Theme.dart';
 import 'package:gym_track/viewmodel/UserViewModel.dart';
 import 'package:scoped_model/scoped_model.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen(this._signUpViewModel) : super();
 
-  SignUpViewModel _signUpViewModel;
+  final SignUpViewModel _signUpViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,11 @@ class WelcomeScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Center(
-              child: Icon(
-            Icons.account_balance,
-            size: 150,
-          )),
-          _emptySpace(8),
+              child: SvgPicture.asset("design/svg/app_icon.svg",
+                  width: 100, height: 100)),
+          _emptySpace(16),
           Text(
-            "FitNapp",
+            "Fitnapp",
             style: TextStyle(
                 color: ApplicationTheme.current.textColor,
                 fontSize: 20,
