@@ -6,9 +6,9 @@ This application will be the companion and the logger for fitness session and ex
 
 ### Welcome
 
-![welcome](https://raw.githubusercontent.com/bmoliveira/fitnapp/master/design/prints/welcome_screen_android.png) ![welcome](https://raw.githubusercontent.com/bmoliveira/fitnapp/master/design/prints/welcome_screen_ios.png)
+![welcome](https://raw.githubusercontent.com/bmoliveira/fitnapp/master/design/prints/welcome_screen_android.png)
 
-
+![welcome](https://raw.githubusercontent.com/bmoliveira/fitnapp/master/design/prints/welcome_screen_ios.png)
 
 ## Getting Started
 
