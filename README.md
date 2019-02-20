@@ -28,6 +28,6 @@ The Specs and the definition of the models.
 
 Any other documentation will be automatically generated with the dart_docs tool.
 
-## Design resources
+## [Design](/design/) resources
 
-The design resources [SVG Icons](/design/svg) and [Sketch files](/design/sketch) are under the [design](/design/) folder.
+The design resources [SVG Icons](/design/svg) and [Sketch files](/design/sketch) are under the design folder.
