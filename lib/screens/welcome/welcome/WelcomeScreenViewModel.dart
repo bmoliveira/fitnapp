@@ -1,3 +1,4 @@
+import 'package:gym_track/screens/welcome/login/LoginScreen.dart';
 import 'package:gym_track/screens/welcome/register/RegisterAccountViewModel.dart';
 import 'package:gym_track/viewmodel/UserViewModel.dart';
 
@@ -6,7 +7,7 @@ class WelcomeScreenViewModel {
 
   WelcomeScreenViewModel(this._userViewModel) : super();
 
-  RegisterAccountViewModel get registerAccountViewModel {
-    return RegisterAccountViewModel(_userViewModel);
+  LoginScreenViewModel get loginViewModel {
+    return LoginScreenViewModel(_userViewModel);
   }
 }

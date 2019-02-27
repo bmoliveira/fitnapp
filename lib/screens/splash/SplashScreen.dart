@@ -39,7 +39,7 @@ class SplashScreen extends StatelessWidget {
   void _handleLoadedState(BuildContext context, Loaded state) {
     final stateValue = state.value;
     if (stateValue is WelcomeScreenViewModel) {
-      FitnessNavigator.pushSignUp(context,
+      FitnessNavigator.pushWelcome(context,
           MaterialPageRoute(builder: (context) {
         return WelcomeScreen(stateValue);
       }));

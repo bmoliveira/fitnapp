@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gym_track/configuration/AppIcons.dart';
 import 'package:gym_track/configuration/Theme.dart';
+import 'package:gym_track/generic/Buttons.dart';
+import 'package:gym_track/generic/FitnessNavigatior.dart';
+import 'package:gym_track/screens/welcome/login/LoginScreen.dart';
 import 'package:gym_track/screens/welcome/welcome/WelcomeScreenViewModel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,7 +22,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           //alignment:new Alignment(x, y)
-          children: <Widget>[_logo, _buttonsGroup],
+          children: <Widget>[_logo, _buttonsGroup(context)],
         ),
       ),
     );
@@ -47,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 
-  Widget get _buttonsGroup {
+  Widget _buttonsGroup(BuildContext context) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.only(left: 42, right: 42, bottom: 18),
@@ -56,44 +59,28 @@ class WelcomeScreen extends StatelessWidget {
             verticalDirection: VerticalDirection.down,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[_loginButton, _emptySpace(8), _registerButton],
+            children: <Widget>[
+              _loginButton(context),
+              _emptySpace(8),
+              _registerButton(context)
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget get _registerButton {
-    return FlatButton(
-      color: null,
-      onPressed: () => {},
-      shape:
-          RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
-      child: Center(
-          child: Container(
-              child: Text(
-        "Create account",
-        style: TextStyle(
-            color: ApplicationTheme.current.secondaryTextColor,
-            decoration: TextDecoration.underline),
-      ))),
-    );
+  Widget _registerButton(BuildContext context) {
+    return FitTextButton("Create account", onPressed: () => {});
   }
 
-  Widget get _loginButton {
-    return RaisedButton(
-      child: Container(
-        child: Center(
-          child: Text(
-            "Login",
-            style: TextStyle(color: ApplicationTheme.current.accentColor),
-          ),
-        ),
-      ),
-      shape:
-          RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
-      onPressed: () => {},
-      color: ApplicationTheme.current.textColor,
+  Widget _loginButton(BuildContext context) {
+    return FitColorButton(
+      "Login",
+      onPressed: () => FitnessNavigator.pushLogin(
+          context,
+          FitnessNavigator.generateRouteForLogin(
+              _welcomeScreenViewModel.loginViewModel)),
     );
   }
 
