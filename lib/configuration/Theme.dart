@@ -23,9 +23,13 @@ class ApplicationTheme {
   );
 
   static ThemeData themeData = ThemeData(
-      brightness: Brightness.light,
-      primaryColor: Colors.black,
-      backgroundColor: Colors.white);
+    brightness: Brightness.light,
+    primaryColor: Colors.black,
+    primaryColorDark: Colors.black,
+    cursorColor: Colors.black,
+    textSelectionColor: Colors.black,
+    backgroundColor: Colors.white,
+  );
 
   Color mainColor = black;
   Color mainDarkColor = black;
