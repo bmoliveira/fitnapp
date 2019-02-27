@@ -15,14 +15,16 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      height: double.maxFinite,
-      child: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          //alignment:new Alignment(x, y)
-          children: <Widget>[_logo, _buttonsGroup(context)],
+    return Scaffold(
+      body: Container(
+        color: Colors.white,
+        height: double.maxFinite,
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            //alignment:new Alignment(x, y)
+            children: <Widget>[_logo, _buttonsGroup(context)],
+          ),
         ),
       ),
     );
@@ -30,22 +32,26 @@ class WelcomeScreen extends StatelessWidget {
 
   Widget get _logo {
     return Expanded(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Center(
-              child: SvgPicture.asset(AppIcons.AppIconPath,
-                  width: 100, height: 100)),
-          _emptySpace(16),
-          Text(
-            "Fitnapp",
-            style: TextStyle(
-                color: ApplicationTheme.current.textColor,
-                fontSize: 20,
-                decorationStyle: TextDecorationStyle.double,
-                decoration: TextDecoration.combine([])),
-          ),
-        ],
+      child: Hero(
+        tag: "logo",
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Center(
+                child: SvgPicture.asset(AppIcons.AppIconPath,
+                    width: 100, height: 100)),
+            SizedBox(height: 16),
+            Text(
+              "Welcome",
+              style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  color: ApplicationTheme.current.textColor,
+                  fontSize: 20,
+                  decorationStyle: TextDecorationStyle.double,
+                  decoration: TextDecoration.combine([])),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -61,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               _loginButton(context),
-              _emptySpace(8),
+              SizedBox(height: 8),
               _registerButton(context)
             ],
           ),
@@ -71,22 +77,21 @@ class WelcomeScreen extends StatelessWidget {
   }
 
   Widget _registerButton(BuildContext context) {
-    return FitTextButton("Create account", onPressed: () => {});
+    return Hero(
+        tag: "Register",
+        child: FitTextButton("Create account", onPressed: () => {}));
   }
 
   Widget _loginButton(BuildContext context) {
-    return FitColorButton(
-      "Login",
-      onPressed: () => FitnessNavigator.pushLogin(
-          context,
-          FitnessNavigator.generateRouteForLogin(
-              _welcomeScreenViewModel.loginViewModel)),
-    );
-  }
-
-  Widget _emptySpace(double size) {
-    return Container(
-      height: size,
+    return Hero(
+      tag: "Login",
+      child: FitColorButton(
+        "Login",
+        onPressed: () => FitnessNavigator.pushLogin(
+            context,
+            FitnessNavigator.generateRouteForLogin(
+                _welcomeScreenViewModel.loginViewModel)),
+      ),
     );
   }
 }
