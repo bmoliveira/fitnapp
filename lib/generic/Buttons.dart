@@ -59,8 +59,9 @@ class FitColorButton extends StatelessWidget {
   Color color;
   VoidCallback onPressed;
 
-  FitColorButton(this._title, {titleColor, color, @required this.onPressed})
-      : super() {
+  FitColorButton(this._title,
+      {Key key, titleColor, color, @required this.onPressed})
+      : super(key: key) {
     this.titleColor = titleColor ?? ApplicationTheme.current.accentTextColor;
     this.color = color ?? ApplicationTheme.current.mainColor;
   }
@@ -88,50 +89,62 @@ class FitColorButton extends StatelessWidget {
 }
 
 class ProgressButton extends FitColorButton {
-  final bool _isLoading;
+  final Stream<bool> isLoading;
 
-  ProgressButton(title, this._isLoading,
-      {titleColor, color, @required onPressed})
+  ProgressButton(title,
+      {Key key,
+      titleColor,
+      color,
+      @required this.isLoading,
+      @required onPressed})
       : super(title,
-            titleColor: titleColor, color: color, onPressed: onPressed);
+            key: key,
+            titleColor: titleColor,
+            color: color,
+            onPressed: onPressed);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox.fromSize(
       size: Size.fromHeight(40),
-      child: RaisedButton(
-        child: Stack(children: <Widget>[
-          _isLoading
-              ? Container(
-                  alignment: Alignment(1, 0.5),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: CircularProgressIndicator(
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
-                            strokeWidth: 2,
-                          ),
-                        ),
-                      ]),
-                )
-              : SizedBox(),
-          Center(
-            child: Text(
-              _title,
-              style: TextStyle(fontSize: 18, color: titleColor),
-            ),
-          ),
-        ]),
-        shape:
-            RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
-        disabledColor: _isLoading ? color : null,
-        onPressed: _isLoading ? null : onPressed,
-        color: color,
-      ),
+      child: StreamBuilder<bool>(
+          initialData: false,
+          stream: isLoading,
+          builder: (context, snapshot) {
+            return RaisedButton(
+              child: Stack(children: <Widget>[
+                snapshot.data
+                    ? Container(
+                        alignment: Alignment(1, 0.5),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                      Colors.white),
+                                  strokeWidth: 2,
+                                ),
+                              ),
+                            ]),
+                      )
+                    : Container(),
+                Center(
+                  child: Text(
+                    _title,
+                    style: TextStyle(fontSize: 18, color: titleColor),
+                  ),
+                ),
+              ]),
+              shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30)),
+              disabledColor: snapshot.data ? color : null,
+              onPressed: snapshot.data ? null : onPressed,
+              color: color,
+            );
+          }),
     );
   }
 }

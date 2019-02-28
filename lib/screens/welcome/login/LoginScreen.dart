@@ -4,18 +4,18 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gym_track/configuration/AppIcons.dart';
 import 'package:gym_track/configuration/Theme.dart';
+import 'package:gym_track/generic/BlocProvider.dart';
 import 'package:gym_track/generic/Buttons.dart';
 import 'package:gym_track/generic/ModelState.dart';
+import 'package:gym_track/generic/Validators.dart';
 import 'package:gym_track/screens/home/HomePage.dart';
+import 'package:rxdart/rxdart.dart';
 import 'package:gym_track/viewmodel/UserViewModel.dart';
 
 class LoginScreen extends StatelessWidget {
-  final LoginScreenViewModel _viewModel;
-
-  LoginScreen(this._viewModel) : super();
-
   @override
   Widget build(BuildContext context) {
+    LoginScreenBloc loginScreenBloc = BlocProvider.of(context);
     return Scaffold(
       appBar: AppBar(
         title: Text("Login"),
@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                 onChanged: _passwordChanged,
               ),
               SizedBox(height: 42),
-              _loginButton(context),
+              _loginButton(context, loginScreenBloc),
               SizedBox(height: 8),
               _registerButton(context)
             ],
@@ -61,10 +61,11 @@ class LoginScreen extends StatelessWidget {
             isUnderscored: false, onPressed: () => {}));
   }
 
-  Widget _loginButton(BuildContext context) {
+  Widget _loginButton(BuildContext context, LoginScreenBloc bloc) {
     return Hero(
         tag: "Login",
-        child: ProgressButton("Login", true, onPressed: () => {}));
+        child: ProgressButton("Login",
+            isLoading: bloc.isLoading, onPressed: () => bloc.login()));
   }
 
   Widget get _logo {
@@ -98,39 +99,49 @@ class LoginScreen extends StatelessWidget {
   void _emailChanged(String text) {}
 }
 
-class LoginScreenViewModel {
+class LoginScreenBloc implements BlocBase {
+  LoginScreenBloc(this._userViewModel);
+
   UserViewModel _userViewModel;
 
-  // TODO: Find a way to properly do this
-  ModelState<LoginScreenState> _state = ModelState(LoginStateFilling());
-  ModelState<LoginScreenState> get state {
-    return _state;
+  PublishSubject<bool> _loadingSubject = PublishSubject<bool>();
+  Observable<bool> get isLoading => _loadingSubject.stream;
+
+  PublishSubject<String> _errorEmailSubject = PublishSubject<String>();
+  Observable<String> get errorEmail => _errorEmailSubject.stream;
+
+  String _email = "";
+  get email => _email;
+  set(value) {
+    _email = value;
+    if (_currentEmailError != null) _validateForm();
   }
 
-  LoginScreenViewModel(this._userViewModel);
+  String password = "";
 
-  void login() {}
-}
+  String _currentEmailError;
 
-abstract class LoginScreenState extends Equatable {
-  LoginScreenState([props]) : super([props]);
-}
+  void login() {
+    _loadingSubject.add(true);
+    if (!_validateForm()) return;
+    _loadingSubject.add(true);
+  }
 
-class LoginStateFilling extends LoginScreenState {
-  String email;
-  String password;
-  String error;
-  bool isLoading;
+  bool _validateForm() {
+    var hasErrors = false;
 
-  LoginStateFilling(
-      {Key, this.email = "", this.password = "", this.error, this.isLoading})
-      : super([LoginStateFilling, error, isLoading]);
-}
+    if (!EmailValidator.isValid(email)) {
+      _currentEmailError = "Invalid Email";
+      _errorEmailSubject.add(_currentEmailError);
+      hasErrors = true;
+    }
 
-class LoginStateLoaded extends LoginScreenState {
-  HomeScreenViewModel homeViewModel;
+    return hasErrors;
+  }
 
-  LoginStateLoaded(userViewModel) : super([LoginStateLoaded]) {
-    this.homeViewModel = HomeScreenViewModel(userViewModel);
+  @override
+  void dispose() {
+    _loadingSubject.sink.close();
+    _errorEmailSubject.sink.close();
   }
 }

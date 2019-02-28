@@ -7,7 +7,7 @@ class WelcomeScreenViewModel {
 
   WelcomeScreenViewModel(this._userViewModel) : super();
 
-  LoginScreenViewModel get loginViewModel {
-    return LoginScreenViewModel(_userViewModel);
+  LoginScreenBloc get loginViewModel {
+    return LoginScreenBloc(_userViewModel);
   }
 }
