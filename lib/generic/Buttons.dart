@@ -1,28 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:gym_track/configuration/Theme.dart';
 
+const Constraints _defaultConstraints =
+    BoxConstraints(minHeight: 40, maxWidth: 350);
+
 class FitTextButton extends StatelessWidget {
-  final String _title;
-  Color get titleColor {
-    return _titleColor;
-  }
-
-  Color _titleColor;
-
-  Color get color {
-    return _color;
-  }
-
-  Color _color;
-
-  bool _isUnderscored;
-  bool get isUnderscored {
-    return _isUnderscored;
-  }
-
-  final VoidCallback onPressed;
-
-  FitTextButton(this._title, {titleColor, color, isUnderscored, this.onPressed})
+  FitTextButton(this._title,
+      {titleColor,
+      color,
+      isUnderscored,
+      this.constraints = _defaultConstraints,
+      @required this.onPressed})
       : super() {
     this._isUnderscored = isUnderscored ?? true;
     this._titleColor =
@@ -30,46 +19,65 @@ class FitTextButton extends StatelessWidget {
     this._color = color;
   }
 
+  final String _title;
+
+  Color _titleColor;
+
+  Color _color;
+
+  bool _isUnderscored;
+
+  final VoidCallback onPressed;
+
+  final Constraints constraints;
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: Size.fromHeight(40),
+    return ConstrainedBox(
+      constraints: constraints,
       child: FlatButton(
-        color: color,
+        color: _color,
         onPressed: onPressed,
         shape:
             RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30)),
-        child: Center(
-            child: Container(
-                child: Text(
-          _title,
-          style: TextStyle(
-              fontSize: 12,
-              color: titleColor,
-              decoration: _isUnderscored ? TextDecoration.underline : null),
-        ))),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+              child: Container(
+                  child: Text(
+            _title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 14,
+                height: 1.2,
+                color: _titleColor,
+                decoration: _isUnderscored ? TextDecoration.underline : null),
+          ))),
+        ),
       ),
     );
   }
 }
 
 class FitColorButton extends StatelessWidget {
+  FitColorButton(this._title,
+      {Key key, titleColor, color, constraints, @required this.onPressed})
+      : super(key: key) {
+    this.titleColor = titleColor ?? ApplicationTheme.current.accentTextColor;
+    this.color = color ?? ApplicationTheme.current.mainColor;
+    this._constraints = constraints ?? _defaultConstraints;
+  }
+
   String _title;
   Color titleColor;
   Color color;
   VoidCallback onPressed;
-
-  FitColorButton(this._title,
-      {Key key, titleColor, color, @required this.onPressed})
-      : super(key: key) {
-    this.titleColor = titleColor ?? ApplicationTheme.current.accentTextColor;
-    this.color = color ?? ApplicationTheme.current.mainColor;
-  }
+  Constraints _constraints;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: Size.fromHeight(40),
+    return ConstrainedBox(
+      constraints: _constraints,
       child: RaisedButton(
         child: Container(
           child: Center(
@@ -95,18 +103,20 @@ class ProgressButton extends FitColorButton {
       {Key key,
       titleColor,
       color,
+      Constraints constraints,
       @required this.isLoading,
       @required onPressed})
       : super(title,
             key: key,
             titleColor: titleColor,
             color: color,
+            constraints: constraints,
             onPressed: onPressed);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-      size: Size.fromHeight(40),
+    return ConstrainedBox(
+      constraints: _constraints,
       child: StreamBuilder<bool>(
           initialData: false,
           stream: isLoading,
