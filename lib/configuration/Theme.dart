@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
 
 class ApplicationTheme {
   static ApplicationTheme current = ApplicationTheme();
@@ -27,7 +26,7 @@ class ApplicationTheme {
     primaryColor: Colors.black,
     primaryColorDark: Colors.black,
     cursorColor: Colors.black,
-    textSelectionColor: Colors.black,
+    textSelectionColor: Colors.black12,
     backgroundColor: Colors.white,
   );
 
