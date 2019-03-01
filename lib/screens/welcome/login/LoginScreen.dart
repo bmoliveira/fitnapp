@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: BoundedSingleChildScrollView(
-          minHeight: 450,
+          minHeight: 500,
           child: Padding(
             padding: EdgeInsets.only(left: 42, right: 42, bottom: 16),
             child: Column(
@@ -58,7 +58,7 @@ class LoginScreen extends StatelessWidget {
   Widget _registerButton(BuildContext context) {
     return Hero(
         tag: "Register",
-        child: FitTextButton("Don't have an account? Create here",
+        child: FitTextButton("Forgot your password?\nJust reset it 😅",
             isUnderscored: false, onPressed: () => {}));
   }
 
